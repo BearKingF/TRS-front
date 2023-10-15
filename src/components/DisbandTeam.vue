@@ -1,0 +1,116 @@
+
+<script setup lang="ts">
+//导入接口
+import disbandTeamAPI from "../apis/disbandTeamAPI/disbandteam";
+//导入资源
+import image from "@/assets/17.png";
+//其他
+import router from "../routers";
+import { reactive, h } from "vue";
+import { ElNotification } from "element-plus";
+//声明表单
+const form = reactive({
+    password : "",
+});
+const onSubmit = async () => {
+    if ( form.password !== "") {
+        try {
+            const result = await disbandTeamAPI(form);
+            const {  code, msg } = result;
+            if (code === 200 && msg === "ok") {
+                    ElNotification({ title: "解散成功!"});
+                router.push("/user");
+                }
+                else throw new Error(msg);
+        }
+        catch (e: any) {
+            console.log(e);
+            ElNotification(
+                {
+                    title: "抱歉",
+                    message: h("i", { style: "color:teal" }, `解散失败, ${e.message || "未知错误"}`)
+                }
+            );
+        }
+    }
+    else {
+        ElNotification({
+            title: "失败",
+            message: h("i", { style: "color: teal" }, "解散失败，请将必填内容输入完整!"),
+        });
+    };
+};
+const clear = () => {
+    form.password= "";
+
+};
+</script>
+
+
+
+
+
+<template>
+        <div class="div">
+        <div style="text-align: center ; margin-left: 120px">
+            <h3>解散团队</h3>
+        </div>
+        <div>
+            <el-image class="img" :src="image">
+                </el-image>
+        </div>
+        <el-container class = "container">
+        <el-form :model="form" label-width="120px">
+            <el-form-item label="*团队密码">
+                <el-input v-model="form.password" />
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="onSubmit" class="button">解散</el-button>
+                <el-button class="button" @click="clear">清空</el-button>
+            </el-form-item>
+        </el-form>
+         </el-container>
+    </div>
+
+</template>
+
+
+
+
+<style scoped>
+.div {
+    width: 400px;
+    height: 600px;
+    margin: 40px 130px 0 auto;
+}
+
+.button {
+    margin: 20px;
+    width: 100px;
+}
+
+.container {
+  display: flex; /* 使用 Flexbox 布局 */
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+}
+.img {
+   /* 使用 position: relative; 属性来相对定位元素 */
+   /* position:relative;*/
+    left: 450px; /*用于将元素向右移动 700 像素 */
+  /* 使用 position: absolute; 将元素设置为绝对定位，以便手动定位 */
+    position: absolute;
+
+  /* 使用 left: 100px; 将元素的左边界定位到页面的水平位置 100px 处 */
+ /* left: 700px;*/
+
+  /* 使用 top: 200px; 将元素的上边界定位到页面的垂直位置 200px 处 */
+  top: 100px;
+
+  /* 使用 width: 300px; 设置元素的宽度为 300px */
+  width: 600px;
+
+  /* 使用 height: 200px; 设置元素的高度为 200px */
+  height: 600px;
+}
+</style>

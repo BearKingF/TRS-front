@@ -1,0 +1,124 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+   display: flex;
+    /* 使用 flex 布局 */
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
+    height: 100vh;
+    /* 设置高度为视口高度 */
+    width: 100vw;
+      /* 设置宽度为100%视口宽度 */
+    margin: 0;
+    /* 去除默认外边距 */
+    padding: 0;
+    /* 去除默认的内边距 */
+    place-items: center; /*将子元素水平和垂直居中对齐 */
+    min-width: 320px; /*设置最小宽度为320像素，确保在较窄的屏幕上也能正常显示内容 */
+    min-height: 100vh;  /*设置最小高度为视口高度的100%，确保内容至少占满整个视口的高度 */
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.card {
+  padding: 2em;
+}
+
+#app {
+/* 设置最大宽度为2000像素，以避免内容在非常宽的屏幕上无限扩展 */
+  max-width: 2000px;
+
+  /* 设置宽度为父容器宽度的100%，让元素占据父容器的宽度的100% */
+  width: 100%;
+
+  /* 设置高度为父容器高度的100%，让元素占据父容器的高度的100% */
+  height: 100%;
+
+  /* 设置最大高度为2000像素，以避免内容在非常高的屏幕上无限扩展 */
+  max-height: 2000px;
+
+  /* 在水平方向上自动居中对齐，左右外边距会根据可用空间平分 */
+  margin: 0 auto;
+
+  /* 垂直和水平方向上的内边距都被设置为0，没有额外的内边距 */
+  padding: 0;
+
+  /* 文本内容在元素内水平居中对齐 */
+  text-align: center;
+  
+  display: flex;
+    /* 使用 flex 布局 */
+  flex-direction: column;
+    /* 将子元素垂直排列 */
+
+  /* 设置背景颜色为'aqua'，淡蓝绿色 */
+  background-color: aqua;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
